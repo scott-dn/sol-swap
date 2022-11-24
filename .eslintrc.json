@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "sonarjs", "import", "promise"],
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "eslint:all",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:promise/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-console": "off",
+    "eqeqeq": ["error"],
+    "no-ternary": "off",
+    "one-var": "off",
+    "id-length": "off",
+    "sort-keys": "off",
+    "sort-vars": "off",
+    "no-magic-numbers": "off",
+    "spaced-comment": ["error", "always", {"exceptions": ["-"], "markers": ["/"]}],
+    "arrow-parens": ["error", "as-needed"],
+    "arrow-body-style": ["error", "as-needed"],
+    "prefer-destructuring": ["error", {"AssignmentExpression": {"array": false}}],
+    "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 0, "maxBOF": 0}],
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "linebreak-style": ["error", "unix"],
+    "eol-last": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "semi": ["error", "always"],
+    "max-len": ["error", {"code": 120, "ignoreComments": true, "ignoreTrailingComments": true}],
+    "sort-imports": ["error", {"ignoreCase": true, "ignoreDeclarationSort": true}],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"]],
+        "newlines-between": "always",
+        "alphabetize": {"order": "asc", "caseInsensitive": false}
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "sonarjs/no-duplicate-string": ["error", 5],
+    "sonarjs/cognitive-complexity": ["error", 20],
+    "promise/catch-or-return": ["error", {"allowFinally": true}]
+  },
+  "overrides": []
+}

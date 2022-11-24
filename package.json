@@ -1,0 +1,35 @@
+{
+  "name": "sol-swap",
+  "version": "0.0.1",
+  "description": "sol swap",
+  "scripts": {
+    "prebuild": "npm run prettier && npm run lint",
+    "build": "tsc",
+    "init": "ts-node ./src/init.ts",
+    "prettier:check": "prettier --check .",
+    "prettier": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.1.0",
+    "@types/node": "^14.18.33",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-sonarjs": "^0.16.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@solana/spl-token": "^0.3.6",
+    "@solana/web3.js": "^1.66.2"
+  }
+}
