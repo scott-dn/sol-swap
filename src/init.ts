@@ -4,7 +4,8 @@ import {createMint, getOrCreateAssociatedTokenAccount, mintTo} from '@solana/spl
 import {clusterApiUrl, Connection, Keypair} from '@solana/web3.js';
 
 /*
- * Token mint: CQb2zGjMghBZauF35NF6RyJtR2Cd6n5ZkZEWpJZSfFvw
+ * Explorer: https://explorer.solana.com/address/EhtNLdqPZubtccYe4yrtcm99ANRRTKpjMDN236rNpHka?cluster=testnet
+ * Token mint: EhtNLdqPZubtccYe4yrtcm99ANRRTKpjMDN236rNpHka
  * Authority: 3LFR2aVZP7YiGaTDtD8KC6deFqu8WZdCeBvK6FB1CXiu
  *
  */
@@ -25,7 +26,7 @@ const createToken = async (secret: Uint8Array) => {
     accountKeyPair.publicKey
   );
 
-  await mintTo(connection, accountKeyPair, tokenMint, tokenAccount.address, accountKeyPair, 10 * 1e8);
+  await mintTo(connection, accountKeyPair, tokenMint, tokenAccount.address, accountKeyPair, 1_000_000 * 1e8);
 };
 
 const secretPath = process.env.SECRET_PATH;
