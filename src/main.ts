@@ -1,22 +1,20 @@
-import {readFileSync} from 'fs';
+import {Connection, PublicKey, sendAndConfirmTransaction, Transaction, TransactionInstruction} from '@solana/web3.js';
 
-import {clusterApiUrl, Connection, Keypair} from '@solana/web3.js';
-
-import {createToken} from './token';
-
-const initKeyPair = () => {
-  const secretPath = process.env.SECRET_PATH;
-  if (!secretPath) throw Error('missing SECRET_PATH');
-  return Keypair.fromSecretKey(Buffer.from(JSON.parse(readFileSync(secretPath).toString())));
-};
+import {RPC_URL} from './constant';
+import {initKeyPair} from './utils';
 
 const main = async () => {
   const accountKeyPair = initKeyPair();
 
-  const connection = new Connection(clusterApiUrl('testnet'));
+  const connection = new Connection(RPC_URL);
 
-  const tokenMOVE = await createToken(connection, accountKeyPair, 8, 1e8 * 1_000);
-  console.log(`Token Mint Dashboard Url: https://explorer.solana.com/address/${tokenMOVE}?cluster=testnet`);
+  const transaction = new Transaction().add(
+    new TransactionInstruction({
+      keys: [{pubkey: accountKeyPair.publicKey, isSigner: false, isWritable: false}],
+      programId: new PublicKey('6DaDj8g2hhQhxgHThfkHCkEdoZXQBVHRuJV9Y8jKmvSA')
+    })
+  );
+  await sendAndConfirmTransaction(connection, transaction, [accountKeyPair]);
 };
 
 main().catch(console.error);

@@ -3,3 +3,5 @@ coverage
 public
 build
 idl
+target
+test-ledger
