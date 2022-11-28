@@ -5,7 +5,8 @@
   "scripts": {
     "prebuild": "npm run prettier && npm run lint",
     "build": "tsc",
-    "init": "ts-node ./src/init.ts",
+    "init": "ts-node ./client/init.ts",
+    "main": "ts-node ./client/main.ts",
     "prettier:check": "prettier --check .",
     "prettier": "prettier --write .",
     "lint:check": "eslint .",
