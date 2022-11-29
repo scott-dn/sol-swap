@@ -88,7 +88,7 @@ import {airdrop, initKeyPair} from './utils';
       SystemProgram.transfer({
         fromPubkey: tokenWSOLAccountOwner.publicKey,
         toPubkey: tokenWSOLAccount.address,
-        lamports: LAMPORTS_PER_SOL
+        lamports: 10 * LAMPORTS_PER_SOL
       }),
       createSyncNativeInstruction(tokenWSOLAccount.address)
     ),

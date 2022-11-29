@@ -32,7 +32,6 @@ import {initKeyPair} from './utils';
     getOrCreateAssociatedTokenAccount(connection, payerAndTokenMoveOwner, NATIVE_MINT, tokenWSOLAccountOwner.publicKey),
     getOrCreateAssociatedTokenAccount(connection, payerAndTokenMoveOwner, NATIVE_MINT, payerAndTokenMoveOwner.publicKey)
   ]);
-
   await sendAndConfirmTransaction(
     connection,
     new Transaction().add(
@@ -57,7 +56,7 @@ import {initKeyPair} from './utils';
           },
           {
             pubkey: payerAndTokenMoveOwner.publicKey,
-            isSigner: false,
+            isSigner: true,
             isWritable: false
           },
           {
@@ -77,7 +76,7 @@ import {initKeyPair} from './utils';
           },
           {
             pubkey: tokenWSOLAccountOwner.publicKey,
-            isSigner: false,
+            isSigner: true,
             isWritable: false
           }
         ]
