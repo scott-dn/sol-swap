@@ -21,7 +21,7 @@ $ make deploy-local # output ProgramId
 $ PROGRAM_ID="${PROGRAM_ID}" make swap-local
 
 # test suite
-$ make test
+$ make test-suite
 ```
 
 testnet:

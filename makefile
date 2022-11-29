@@ -33,8 +33,8 @@ deploy-testnet: build
 	solana config set --url testnet
 	solana deploy target/sbf-solana-solana/release/swap.so
 
-test:
-	npm t
+test-suite: build init-local
+	PROGRAM_ID=$(shell solana deploy target/sbf-solana-solana/release/swap.so | grep 'Program Id:' | sed 's/Program Id: //g') npm t
 
 format:
 	npm run prettier
