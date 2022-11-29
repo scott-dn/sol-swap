@@ -16,7 +16,7 @@ local development:
 $ make local
 
 # another terminal
-$ make init
+$ make init-local
 $ make deploy-local # output ProgramId
 $ PROGRAM_ID="${PROGRAM_ID}" make swap-local
 
@@ -27,5 +27,5 @@ $ make test
 testnet:
 
 ```bash
-$ make swap-local
+$ make swap-testnet
 ```
