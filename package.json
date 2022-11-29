@@ -11,6 +11,7 @@
     "prettier": "prettier --write .",
     "lint:check": "eslint .",
     "lint": "eslint . --fix",
+    "clean": "rm -rf node_modules package-lock.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
