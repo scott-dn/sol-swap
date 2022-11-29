@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "sol swap",
   "scripts": {
-    "prebuild": "npm run prettier && npm run lint",
+    "prebuild": "npm run prettier:check && npm run lint:check",
     "build": "tsc",
     "init": "ts-node ./client/init.ts",
     "main": "ts-node ./client/main.ts",
@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "@solana/spl-token": "^0.3.6",
-    "@solana/web3.js": "^1.66.2"
+    "@solana/web3.js": "^1.66.2",
+    "borsh": "^0.7.0",
+    "bs58": "^5.0.0"
   }
 }
