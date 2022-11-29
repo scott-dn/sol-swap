@@ -5,27 +5,40 @@ import {
   MintLayout,
   TOKEN_PROGRAM_ID
 } from '@solana/spl-token';
-import {Connection, LAMPORTS_PER_SOL, sendAndConfirmTransaction, SystemProgram, Transaction} from '@solana/web3.js';
+import {
+  Connection,
+  Keypair,
+  LAMPORTS_PER_SOL,
+  sendAndConfirmTransaction,
+  SystemProgram,
+  Transaction
+} from '@solana/web3.js';
 
 import {RPC_URL} from './constant';
 import {initKeyPair} from './utils';
 
 (async (
-  connection,
+  connection: Connection,
   // AzzJswijjWLa9uRHYUWanEv99N1qHyG75DY6pE71QoW6
-  payer,
+  payer: Keypair,
   // 7gJu2q8tQFQi4NLuAvYamvjJABnv6vFqZgA91Ht4ET8J
-  receiver,
+  receiver: Keypair,
   // 6xarv16f8HkenQHVR8mTyafQroPJoJ3QzLV5FsDggbxZ
-  tokenMove,
+  tokenMove: Keypair,
   // HymQQ1QnNeu4QGyVSMRG2WoMYvhfz2upFd5Sgpy8fjmC
-  sourceTokenAccount,
+  sourceTokenAccount: Keypair,
   // 62kczpMYMGgbid8HhFWihm2x2crSShNp2qkaD5oxC7NL
-  destinationTokenAccount
+  destinationTokenAccount: Keypair
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, mintRentRequire, tokenRentRequire] = await Promise.all([
-    connection.requestAirdrop(payer.publicKey, LAMPORTS_PER_SOL),
+  const airdropSignature = await connection.requestAirdrop(payer.publicKey, LAMPORTS_PER_SOL);
+  const latestBlockHash = await connection.getLatestBlockhash();
+  await connection.confirmTransaction({
+    blockhash: latestBlockHash.blockhash,
+    lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+    signature: airdropSignature
+  });
+
+  const [mintRentRequire, tokenRentRequire] = await Promise.all([
     connection.getMinimumBalanceForRentExemption(MintLayout.span),
     connection.getMinimumBalanceForRentExemption(AccountLayout.span)
   ]);
